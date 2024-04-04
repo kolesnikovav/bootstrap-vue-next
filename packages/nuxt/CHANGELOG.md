@@ -1,5 +1,96 @@
 # Changelog
 
+## [0.13.0](https://github.com/kolesnikovav/bootstrap-vue-next/compare/nuxt-v0.16.6...nuxt-v0.13.0) (2024-04-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* use createBootstrap function for the plugin definition
+* **useBreadcrumb:** return a ref instead of reactive
+* **BToast:** rebuild events to match https://getbootstrap.com/docs/5.3/components/toasts/#events (hide, hidden, show, shown)
+* **BToast:** close event no longer is start of transition, use "hide" event. Close event now corresponds to when close button is clicked during the hide process
+* **BootstrapVuePlugin:** components default is now false. The plugin WILL NOT automatically load all components into global scope (perf) - use option "true" to change
+* **BootstrapVuePlugin:** directives default is now false. The plugin WILL NOT automatically load all directives into global scope (perf) - use option "true" to change
+* **BootstrapVueNextPlugin:** named export renamed from BootstrapVueNext to BootstrapVueNextPlugin
+* rebuild "global variable" system to use app-level provide inject. Review documentation installation guide ([#1719](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1719))
+* **useToast:** redefine the parameters of "show". Instead of many parameters, we simply use a single object
+* **useModalController:** redefine the parameters of "show" and "confirm" Instead of many parameters, we simply use a single object
+* **useToast:** redefine the parameters of "show". Instead of many p… ([#1712](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1712))
+* required vue 3.4
+* rename "Toast" type to OrchestratedToast
+* **useToast:** rename "hide" to "remove" to be more in line with useModalController
+* **BImg:** rounded none by default
+* **BOverlay:** rounded none by default
+* release for 0.11.0
+
+### Features
+
+* **BFormCheckbox:** use a different value/uncheckedValue system under the hood streamlining the code and process ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BFormSpinbutton:** remove render functions, fix docs ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BootstrapVueNextPlugin:** named export renamed from BootstrapVueNext to BootstrapVueNextPlugin ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* **BootstrapVuePlugin:** components default is now false. The plugin WILL NOT automatically load all components into global scope (perf) - use option "true" to change ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* **BootstrapVuePlugin:** directives default is now false. The plugin WILL NOT automatically load all directives into global scope (perf) - use option "true" to change ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* **BTable:** selectedItems becomes a v-modelable prop ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BTable:** WIP fix reactivity engine ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BToaster:** expose show method ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BToast:** I did not eat today and I I have been working for 12 hours straight on this. Enjoy donate at https://opencollective.com/bootstrap-vue-next ([a393473](https://github.com/kolesnikovav/bootstrap-vue-next/commit/a393473373337e29914d93ace838587e2d829a55))
+* **nuxt:** auto import directives ([#1770](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1770)) ([228e0f7](https://github.com/kolesnikovav/bootstrap-vue-next/commit/228e0f7a61f92176f4aba78ddd2150dc4467d6cb))
+* **nuxt:** automatically transform asset urls for vite fixes [#1470](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1470)  ([#1478](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1478)) ([3b61ee1](https://github.com/kolesnikovav/bootstrap-vue-next/commit/3b61ee181313a5fb0897b36a89fdb1fed456ef41))
+* release for 0.11.0 ([5be4a7e](https://github.com/kolesnikovav/bootstrap-vue-next/commit/5be4a7e942f94212ae86c364678bcc65977db7a7))
+* rename "Toast" type to OrchestratedToast ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* required vue 3.4 ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* use createBootstrap function for the plugin definition ([f10fc5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/f10fc5f1c3e6305d7c109d92c2c6995178372649))
+* **useBreadcrumb:** return a ref instead of reactive ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* **useModalController:** add confirm/show methods to globally create modals ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* **useModalController:** add confirm/show methods to globally create modals ([#1701](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1701)) ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* **useModalController:** redefine the parameters of "show" and "confirm" Instead of many parameters, we simply use a single object ([c542416](https://github.com/kolesnikovav/bootstrap-vue-next/commit/c5424161be549cf11d73af4fca2ef1789ea2a201))
+* **useModalController:** show/confirm accept reactive inputs ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* **useToast:** redefine the parameters of "show". Instead of many p… ([#1712](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1712)) ([c542416](https://github.com/kolesnikovav/bootstrap-vue-next/commit/c5424161be549cf11d73af4fca2ef1789ea2a201))
+* **useToast:** redefine the parameters of "show". Instead of many parameters, we simply use a single object ([c542416](https://github.com/kolesnikovav/bootstrap-vue-next/commit/c5424161be549cf11d73af4fca2ef1789ea2a201))
+* **useToast:** rename "hide" to "remove" to be more in line with useModalController ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* **useToast:** show to accept reactive inputs ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* WIP table improvements ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+
+
+### Bug Fixes
+
+* BFormRadio use native [@change](https://github.com/change) & [@input](https://github.com/input) events ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BImg:** rounded none by default ([f259f78](https://github.com/kolesnikovav/bootstrap-vue-next/commit/f259f78cbaef9bb56a813351a64a52c315a56806))
+* **BOverlay:** rounded none by default ([f259f78](https://github.com/kolesnikovav/bootstrap-vue-next/commit/f259f78cbaef9bb56a813351a64a52c315a56806))
+* **BTable:** selectModel default value single =&gt; multi ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **BToast:** close event no longer is start of transition, use "hide" event. Close event now corresponds to when close button is clicked during the hide process ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* **BToast:** rebuild events to match https://getbootstrap.com/docs/5.3/components/toasts/#events (hide, hidden, show, shown) ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* **Directives:** use TS satisfies over TS as -- surprisingly had an affect ([fc1edfb](https://github.com/kolesnikovav/bootstrap-vue-next/commit/fc1edfb672c665c320618a85b16a90c96c798b8d))
+* **nuxt:** defineNuxtPlugin is not defined fixes [#1741](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1741) ([a5e76d6](https://github.com/kolesnikovav/bootstrap-vue-next/commit/a5e76d6111d06d3555e6677f128ed9b84af1a66f))
+* **nuxt:** do not transformasseturls for img -- Fixed by nuxt ([f259f78](https://github.com/kolesnikovav/bootstrap-vue-next/commit/f259f78cbaef9bb56a813351a64a52c315a56806))
+* **nuxt:** optimize `bootstrap-vue-next` fixes [#1758](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1758) ([1aba0d1](https://github.com/kolesnikovav/bootstrap-vue-next/commit/1aba0d1501f815dd7a1a15ed14e874a578d1db9f))
+* **nuxt:** resolution of img not working fixes [#1539](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1539) ([ff63f2c](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ff63f2c490e3068f61760e5ba59b283c40acedc7))
+* rebuild "global variable" system to use app-level provide inject. Review documentation installation guide ([#1719](https://github.com/kolesnikovav/bootstrap-vue-next/issues/1719)) ([afd7e5f](https://github.com/kolesnikovav/bootstrap-vue-next/commit/afd7e5fbd1e8d4decb626c726590225d67804ba1))
+* release 0.1.5 ([0b6efe5](https://github.com/kolesnikovav/bootstrap-vue-next/commit/0b6efe59a14bf460e5bfda8c02e605d26da8890f))
+* **useModal:** not working due to registry value not existing when code ran ([f259f78](https://github.com/kolesnikovav/bootstrap-vue-next/commit/f259f78cbaef9bb56a813351a64a52c315a56806))
+
+
+### Performance Improvements
+
+* **BTabs:** more efficient unregisterTab function ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+* **useModalManager:** use shallowRef for stack & registry ([f259f78](https://github.com/kolesnikovav/bootstrap-vue-next/commit/f259f78cbaef9bb56a813351a64a52c315a56806))
+* **useToast:** use shallowRef ([ca16a16](https://github.com/kolesnikovav/bootstrap-vue-next/commit/ca16a168687dc0e17d6dc5c6210205c1911dd793))
+
+
+### Miscellaneous Chores
+
+* release ([18278f7](https://github.com/kolesnikovav/bootstrap-vue-next/commit/18278f7912f4142786204633d35c94c531dd6784))
+* release 0.13.0 ([77dfebc](https://github.com/kolesnikovav/bootstrap-vue-next/commit/77dfebc30d9a3f6f9f990f6128e8405368ffb16a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * bootstrap-vue-next bumped to 0.13.0
+  * peerDependencies
+    * bootstrap-vue-next bumped to 0.13.0
+
 ## [0.16.6](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/nuxt-v0.16.5...nuxt-v0.16.6) (2024-02-22)
 
 
